@@ -229,6 +229,12 @@
             <min_angle>3.1415</min_angle>
             <max_angle>6.2831</max_angle>
           </horizontal>
+          <vertical>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>3.1415</min_angle>
+            <max_angle>6.2831</max_angle>
+          </vertical>
         </scan>
         <range>
           <min>0.10</min>
@@ -241,15 +247,17 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-        <topicName>/diff/laser/scan</topicName>
+      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so">
+        <topicName>/learnbotics_l/laser/scan</topicName>
         <frameName>Lidar</frameName>
+        <min_range>0.19</min_range>
+        <max_range>130</max_range>
       </plugin>
     </sensor>
   </gazebo>
 
 
-  <!-- ### CAMERA AND JOINT ### -->
+  <!-- ### CAMERA, JOINT AND PLUGIN ### -->
   <link name="Camera">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -278,7 +286,6 @@
     <origin rpy="-1.571 0 0" xyz="0.07456502 0.02996464 0.00016464"/>
   </joint>
 
-  <!--# camera PLUGIN # -->
   <gazebo reference="Camera">
     <sensor type="camera" name="camera_top">
       <update_rate>30.0</update_rate>
