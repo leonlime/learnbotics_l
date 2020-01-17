@@ -220,20 +220,20 @@
     <sensor type="ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>
-      <update_rate>10</update_rate>
+      <update_rate>20</update_rate>
       <ray>
         <scan>
           <horizontal>
             <samples>720</samples>
             <resolution>1</resolution>
-            <min_angle>-${M_PI}</min_angle>
-            <max_angle>${M_PI}</max_angle>
+            <min_angle>-${3.1415926535897931}</min_angle>
+            <max_angle>${3.1415926535897931}</max_angle>
           </horizontal>
           <vertical>
             <samples>16</samples>
             <resolution>1</resolution>
-            <min_angle>-${15.0*M_PI/180.0}</min_angle>
-            <max_angle>${15.0*M_PI/180.0}</max_angle>
+            <min_angle>-${15.0*3.1415926535897931/180.0}</min_angle>
+            <max_angle>${15.0*3.1415926535897931/180.0}</max_angle>
           </vertical>
         </scan>
         <range>
@@ -248,7 +248,8 @@
           <stddev>0.0</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so">
+      
+      <plugin name="gazebo_ros_laser_controller" filename="package://learnbotics_l/plugin/libgazebo_ros_velodyne_laser.so">
         <topicName>/learnbotics_l/laser/scan</topicName>
         <frameName>Lidar</frameName>
         <min_range>0.19</min_range>
